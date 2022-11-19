@@ -23,6 +23,7 @@ BuildRequires:	rpm-build >= 4.6
 BuildRequires:	rpmbuild(macros) >= 1.736
 BuildRequires:	tar >= 1:1.22
 BuildRequires:	vala >= 2:0.44
+BuildRequires:	vala-libadwaita >= 1.0
 BuildRequires:	xz
 Requires:	glib2 >= 1:2.72
 Requires:	gtk4 >= 4.6
