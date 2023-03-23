@@ -5,29 +5,29 @@
 Summary:	IDE paneling library for GTK
 Summary(pl.UTF-8):	Biblioteka do paneli IDE dla GTK
 Name:		libpanel
-Version:	1.0.2
+Version:	1.2.0
 Release:	1
 License:	LGPL v3+
 Group:		Libraries
-Source0:	https://download.gnome.org/sources/libpanel/1.0/%{name}-%{version}.tar.xz
-# Source0-md5:	6e50b6fb007671ebc68da8b9b81e0054
+Source0:	https://download.gnome.org/sources/libpanel/1.2/%{name}-%{version}.tar.xz
+# Source0-md5:	e0943a2fa119fd20226e877be14078da
 URL:		https://gitlab.gnome.org/GNOME/libpanel
 %{?with_apidocs:BuildRequires:	gi-docgen >= 2021.1}
-BuildRequires:	glib2-devel >= 1:2.72
+BuildRequires:	glib2-devel >= 1:2.75
 BuildRequires:	gobject-introspection-devel
-BuildRequires:	gtk4-devel >= 4.6
-BuildRequires:	libadwaita-devel >= 1.0
+BuildRequires:	gtk4-devel >= 4.8
+BuildRequires:	libadwaita-devel >= 1.2
 BuildRequires:	meson >= 0.60
 BuildRequires:	ninja >= 1.5
 BuildRequires:	rpm-build >= 4.6
 BuildRequires:	rpmbuild(macros) >= 1.736
 BuildRequires:	tar >= 1:1.22
 BuildRequires:	vala >= 2:0.44
-BuildRequires:	vala-libadwaita >= 1.0
+BuildRequires:	vala-libadwaita >= 1.2
 BuildRequires:	xz
-Requires:	glib2 >= 1:2.72
-Requires:	gtk4 >= 4.6
-Requires:	libadwaita >= 1.0
+Requires:	glib2 >= 1:2.75
+Requires:	gtk4 >= 4.8
+Requires:	libadwaita >= 1.2
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -50,8 +50,8 @@ Summary:	Header files for libpanel library
 Summary(pl.UTF-8):	Pliki nagłówkowe biblioteki libpanel
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
-Requires:	glib2-devel >= 1:2.72
-Requires:	gtk4-devel >= 4.6
+Requires:	glib2-devel >= 1:2.75
+Requires:	gtk4-devel >= 4.8
 
 %description devel
 Header files for libpanel library.
@@ -65,7 +65,7 @@ Summary(pl.UTF-):	API języka Vala do biblioteki libpanel
 Group:		Development/Libraries
 Requires:	%{name}-devel = %{version}-%{release}
 Requires:	vala >= 2:0.44
-Requires:	vala-libadwaita >= 1.0
+Requires:	vala-libadwaita >= 1.2
 BuildArch:	noarch
 
 %description -n vala-libpanel
