@@ -6,7 +6,7 @@ Summary:	IDE paneling library for GTK
 Summary(pl.UTF-8):	Biblioteka do paneli IDE dla GTK
 Name:		libpanel
 Version:	1.2.0
-Release:	1
+Release:	2
 License:	LGPL v3+
 Group:		Libraries
 Source0:	https://download.gnome.org/sources/libpanel/1.2/%{name}-%{version}.tar.xz
@@ -105,6 +105,9 @@ rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT%{_gtkdocdir}
 %{__mv} $RPM_BUILD_ROOT%{_docdir}/panel-1.0 $RPM_BUILD_ROOT%{_gtkdocdir}
 %endif
+
+# not supported by glibc (as of 2.37)
+%{__rm} -r $RPM_BUILD_ROOT%{_localedir}/ie
 
 %find_lang %{name}
 
