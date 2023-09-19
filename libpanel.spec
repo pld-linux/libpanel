@@ -1,23 +1,24 @@
 #
 # Conditional build:
 %bcond_without	apidocs		# API documentation
+%bcond_without	static_libs	# static library
 #
 Summary:	IDE paneling library for GTK
 Summary(pl.UTF-8):	Biblioteka do paneli IDE dla GTK
 Name:		libpanel
-Version:	1.2.0
-Release:	2
+Version:	1.4.0
+Release:	1
 License:	LGPL v3+
 Group:		Libraries
-Source0:	https://download.gnome.org/sources/libpanel/1.2/%{name}-%{version}.tar.xz
-# Source0-md5:	e0943a2fa119fd20226e877be14078da
+Source0:	https://download.gnome.org/sources/libpanel/1.4/%{name}-%{version}.tar.xz
+# Source0-md5:	97f627a35df83450e07e6111b7948623
 URL:		https://gitlab.gnome.org/GNOME/libpanel
 %{?with_apidocs:BuildRequires:	gi-docgen >= 2021.1}
 BuildRequires:	glib2-devel >= 1:2.75
 BuildRequires:	gobject-introspection-devel
 BuildRequires:	gtk4-devel >= 4.8
 BuildRequires:	libadwaita-devel >= 1.2
-BuildRequires:	meson >= 0.60
+BuildRequires:	meson >= 0.63
 BuildRequires:	ninja >= 1.5
 BuildRequires:	rpm-build >= 4.6
 BuildRequires:	rpmbuild(macros) >= 1.736
@@ -59,6 +60,18 @@ Header files for libpanel library.
 %description devel -l pl.UTF-8
 Pliki nagłówkowe biblioteki libpanel.
 
+%package static
+Summary:	Static libpanel library
+Summary(pl.UTF-8):	Statyczna biblioteka libpanel
+Group:		Development/Libraries
+Requires:	%{name}-devel = %{version}-%{release}
+
+%description static
+Static libpanel library.
+
+%description static -l pl.UTF-8
+Statyczna biblioteka libpanel.
+
 %package -n vala-libpanel
 Summary:	Vala API for libpanel library
 Summary(pl.UTF-):	API języka Vala do biblioteki libpanel
@@ -91,6 +104,7 @@ Dokumentacja API biblioteki libpanel.
 
 %build
 %meson build \
+	%{!?with_static_libs:--default-library=shared} \
 	%{!?with_apidocs:-Ddocs=false}
 
 %ninja_build -C build
@@ -131,6 +145,12 @@ rm -rf $RPM_BUILD_ROOT
 %{_includedir}/libpanel-1
 %{_datadir}/gir-1.0/Panel-1.gir
 %{_pkgconfigdir}/libpanel-1.pc
+
+%if %{with static_libs}
+%files static
+%defattr(644,root,root,755)
+%{_libdir}/libpanel-1.a
+%endif
 
 %files -n vala-libpanel
 %defattr(644,root,root,755)
