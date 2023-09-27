@@ -21,7 +21,7 @@ BuildRequires:	libadwaita-devel >= 1.2
 BuildRequires:	meson >= 0.63
 BuildRequires:	ninja >= 1.5
 BuildRequires:	rpm-build >= 4.6
-BuildRequires:	rpmbuild(macros) >= 1.736
+BuildRequires:	rpmbuild(macros) >= 2.029
 BuildRequires:	tar >= 1:1.22
 BuildRequires:	vala >= 2:0.44
 BuildRequires:	vala-libadwaita >= 1.2
@@ -115,9 +115,8 @@ rm -rf $RPM_BUILD_ROOT
 %ninja_install -C build
 
 %if %{with apidocs}
-# FIXME: where to package gi-docgen generated docs?
-install -d $RPM_BUILD_ROOT%{_gtkdocdir}
-%{__mv} $RPM_BUILD_ROOT%{_docdir}/panel-1.0 $RPM_BUILD_ROOT%{_gtkdocdir}
+install -d $RPM_BUILD_ROOT%{_gidocdir}
+%{__mv} $RPM_BUILD_ROOT%{_docdir}/panel-1.0 $RPM_BUILD_ROOT%{_gidocdir}
 %endif
 
 # not supported by glibc (as of 2.37)
@@ -160,5 +159,5 @@ rm -rf $RPM_BUILD_ROOT
 %if %{with apidocs}
 %files apidocs
 %defattr(644,root,root,755)
-%{_gtkdocdir}/panel-1.0
+%{_gidocdir}/panel-1.0
 %endif
