@@ -6,29 +6,31 @@
 Summary:	IDE paneling library for GTK
 Summary(pl.UTF-8):	Biblioteka do paneli IDE dla GTK
 Name:		libpanel
-Version:	1.6.0
+Version:	1.8.0
 Release:	1
 License:	LGPL v3+
 Group:		Libraries
-Source0:	https://download.gnome.org/sources/libpanel/1.6/%{name}-%{version}.tar.xz
-# Source0-md5:	9fa24aeef3aa6164ad05a35ee0732466
+Source0:	https://download.gnome.org/sources/libpanel/1.8/%{name}-%{version}.tar.xz
+# Source0-md5:	588b3a1f9a9b338c3b49c5fa870659e1
 URL:		https://gitlab.gnome.org/GNOME/libpanel
 %{?with_apidocs:BuildRequires:	gi-docgen >= 2021.1}
-BuildRequires:	glib2-devel >= 1:2.75
+# -std=gnu18
+BuildRequires:	gcc >= 6:8
+BuildRequires:	glib2-devel >= 1:2.80
 BuildRequires:	gobject-introspection-devel
-BuildRequires:	gtk4-devel >= 4.8
-BuildRequires:	libadwaita-devel >= 1.2
+BuildRequires:	gtk4-devel >= 4.15
+BuildRequires:	libadwaita-devel >= 1.6
 BuildRequires:	meson >= 0.63
 BuildRequires:	ninja >= 1.5
 BuildRequires:	rpm-build >= 4.6
 BuildRequires:	rpmbuild(macros) >= 2.029
 BuildRequires:	tar >= 1:1.22
 BuildRequires:	vala >= 2:0.44
-BuildRequires:	vala-libadwaita >= 1.2
+BuildRequires:	vala-libadwaita >= 1.6
 BuildRequires:	xz
-Requires:	glib2 >= 1:2.75
-Requires:	gtk4 >= 4.8
-Requires:	libadwaita >= 1.2
+Requires:	glib2 >= 1:2.80
+Requires:	gtk4 >= 4.15
+Requires:	libadwaita >= 1.6
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -51,8 +53,8 @@ Summary:	Header files for libpanel library
 Summary(pl.UTF-8):	Pliki nagłówkowe biblioteki libpanel
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
-Requires:	glib2-devel >= 1:2.75
-Requires:	gtk4-devel >= 4.8
+Requires:	glib2-devel >= 1:2.80
+Requires:	gtk4-devel >= 4.15
 
 %description devel
 Header files for libpanel library.
@@ -78,7 +80,7 @@ Summary(pl.UTF-):	API języka Vala do biblioteki libpanel
 Group:		Development/Libraries
 Requires:	%{name}-devel = %{version}-%{release}
 Requires:	vala >= 2:0.44
-Requires:	vala-libadwaita >= 1.2
+Requires:	vala-libadwaita >= 1.6
 BuildArch:	noarch
 
 %description -n vala-libpanel
