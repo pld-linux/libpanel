@@ -6,12 +6,12 @@
 Summary:	IDE paneling library for GTK
 Summary(pl.UTF-8):	Biblioteka do paneli IDE dla GTK
 Name:		libpanel
-Version:	1.8.0
+Version:	1.8.1
 Release:	1
 License:	LGPL v3+
 Group:		Libraries
 Source0:	https://download.gnome.org/sources/libpanel/1.8/%{name}-%{version}.tar.xz
-# Source0-md5:	588b3a1f9a9b338c3b49c5fa870659e1
+# Source0-md5:	f98acff4e94d733a3d4b5a32d166e499
 URL:		https://gitlab.gnome.org/GNOME/libpanel
 %{?with_apidocs:BuildRequires:	gi-docgen >= 2021.1}
 # -std=gnu18
