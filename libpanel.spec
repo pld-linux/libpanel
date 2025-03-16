@@ -6,12 +6,12 @@
 Summary:	IDE paneling library for GTK
 Summary(pl.UTF-8):	Biblioteka do paneli IDE dla GTK
 Name:		libpanel
-Version:	1.8.1
+Version:	1.10.0
 Release:	1
 License:	LGPL v3+
 Group:		Libraries
-Source0:	https://download.gnome.org/sources/libpanel/1.8/%{name}-%{version}.tar.xz
-# Source0-md5:	f98acff4e94d733a3d4b5a32d166e499
+Source0:	https://download.gnome.org/sources/libpanel/1.10/%{name}-%{version}.tar.xz
+# Source0-md5:	6867efda31d2f4a7a1ac4ae72c7ec064
 URL:		https://gitlab.gnome.org/GNOME/libpanel
 %{?with_apidocs:BuildRequires:	gi-docgen >= 2021.1}
 # -std=gnu18
@@ -23,7 +23,7 @@ BuildRequires:	libadwaita-devel >= 1.6
 BuildRequires:	meson >= 0.63
 BuildRequires:	ninja >= 1.5
 BuildRequires:	rpm-build >= 4.6
-BuildRequires:	rpmbuild(macros) >= 2.029
+BuildRequires:	rpmbuild(macros) >= 2.042
 BuildRequires:	tar >= 1:1.22
 BuildRequires:	vala >= 2:0.44
 BuildRequires:	vala-libadwaita >= 1.6
@@ -105,16 +105,16 @@ Dokumentacja API biblioteki libpanel.
 %setup -q
 
 %build
-%meson build \
+%meson \
 	%{!?with_static_libs:--default-library=shared} \
-	%{!?with_apidocs:-Ddocs=disabled}
+	-Ddocs=%{__enabled_disabled apidocs}
 
-%ninja_build -C build
+%meson_build
 
 %install
 rm -rf $RPM_BUILD_ROOT
 
-%ninja_install -C build
+%meson_install
 
 %if %{with apidocs}
 install -d $RPM_BUILD_ROOT%{_gidocdir}
